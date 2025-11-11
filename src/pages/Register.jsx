@@ -1,6 +1,6 @@
 import React from 'react';
 
-const rootLayout = () => {
+const Register = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const rootLayout = () => {
     );
 };
 
-export default rootLayout;
+export default Register;

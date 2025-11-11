@@ -1,11 +1,11 @@
 import React from 'react';
 
-const rootLayout = () => {
+const MyActivities = () => {
     return (
         <div>
-            
+            hello
         </div>
     );
 };
 
-export default rootLayout;
+export default MyActivities;

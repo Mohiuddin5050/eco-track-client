@@ -1,11 +1,11 @@
 import React from 'react';
 
-const rootLayout = () => {
+const Challenges = () => {
     return (
         <div>
-            
+            Hollo
         </div>
     );
 };
 
-export default rootLayout;
+export default Challenges;
