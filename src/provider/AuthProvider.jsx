@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const signIn = (email, password) => {
+    console.log(email, password);
     return signInWithEmailAndPassword(auth, email, password);
   };
 

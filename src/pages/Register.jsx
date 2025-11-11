@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
 
 const Register = () => {
-    const { googleLogin, createUser, updateUser, setUser } = use(AuthContext);
+    const { googleLogin, createUser, updateUserProfile, setUser } = use(AuthContext);
 
   const [loading, setLoading] = useState(false);
   const [passError, setPassError] = useState("");
@@ -52,32 +52,22 @@ const Register = () => {
 
     setPassError("");
 
-    // try {
-    //    await createUser(email, password);
+    try {
+       await createUser(email, password);
 
-    //   await updateUserProfile({
-    //     displayName: name,
-    //     photoURL: photo,
-    //   });
-
-    //   toast.success("Registration successful");
-    //   navigate(redirectPath);
-    // } catch (err) {
-    //   toast.error(err.message);
-    // } finally {
-    //   setLoading(false);
-    // }
-    createUser(email, password)
-            .then((result) => {
-                const user=result.user;
-                updateUser(name, photo);
-                setUser({ ...user, displayName: name, photoURL: photo });
-                toast.success("Registration successful!");
-                navigate("/");
-                console.log(user);
-            })
-            .catch((err) => toast.error(err.message));
-
+      await updateUserProfile({
+        displayName: name,
+        photoURL: photo,
+      });
+      setUser({displayName: name,
+        photoURL: photo,})
+      toast.success("Registration successful");
+      navigate(redirectPath);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleGoogle = async () => {
