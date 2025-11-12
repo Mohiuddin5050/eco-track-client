@@ -3,6 +3,7 @@ import Banner from "../components/Banner/Banner";
 import EventsTips from "../components/EventsTips/EventsTips";
 import RecentTips from "../components/RecentTips/RecentTips";
 import Statistics from "../components/Statistics/Statistics";
+import WhyGoGreen from "../components/WhyGoGreen/WhyGoGreen";
 
 const HomePage = () => {
   return (
@@ -12,7 +13,7 @@ const HomePage = () => {
       <ActiveChallenge></ActiveChallenge>
       <RecentTips />
       <EventsTips />
-      
+      <WhyGoGreen />
     </>
   );
 };
