@@ -23,6 +23,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const ChallengeDetails = () => {
   const { id } = useParams();
@@ -44,10 +45,10 @@ const ChallengeDetails = () => {
         const data = await response.json();
         setChallenge(data);
         const demo = { data };
-        console.log(demo.data);
+        // console.log(demo.data);
         setCurrentParticipants(data.participants || 0);
       } catch (error) {
-        console.error("Error fetching challenge:", error);
+        // console.error("Error fetching challenge:", error);
         setError("Failed to load challenge details");
       } finally {
         setLoading(false);
@@ -55,8 +56,6 @@ const ChallengeDetails = () => {
     };
     fetchData();
   }, [id]);
-  console.log(challenge.category);
-  console.log(challenge.imageUrl);
 
   const handleJoinChallenge = () => {
     if (!isJoined) {
@@ -67,6 +66,42 @@ const ChallengeDetails = () => {
       setCurrentParticipants(currentParticipants - 1);
       setIsJoined(false);
       // Here you would typically make an API call to leave the challenge
+    }
+  };
+
+  const handleDelete = async (id) => {
+    console.log(id);
+    try {
+      setLoading(true);
+      await fetch(`http://localhost:3000/challenges/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+
+      // if (!response.ok) {
+      //   throw new Error("Failed to delete challenge");
+      // }
+
+      // const result = await response.json();
+      // console.log(result.message); // ✅ "Challenge deleted successfully"
+
+      // if (result.success) {
+      //   // remove from UI
+      //   setChallenges((prev) =>
+      //     prev.filter((challenge) => challenge._id !== id)
+      //   );
+      //   toast.success(result.message);
+      // } else {
+      //   toast.error(result.message);
+      // }
+    } catch (error) {
+      // console.error("Error deleting challenge:", error);
+      toast.error("Something went wrong while deleting");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -353,7 +388,12 @@ const ChallengeDetails = () => {
               </button>
 
               {/* Share Button */}
-              <button className="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+              <button
+                onClick={() => {
+                  handleDelete(id);
+                }}
+                className="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+              >
                 <svg
                   className="w-5 h-5"
                   fill="none"
