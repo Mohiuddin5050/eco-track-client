@@ -25,9 +25,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 
 const ChallengeDetails = () => {
-  const { _id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [challenge, setChallenge] = useState(null);
+  const [challenge, setChallenge] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isJoined, setIsJoined] = useState(false);
@@ -37,12 +37,14 @@ const ChallengeDetails = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/challenges/${_id}`);
+        const response = await fetch(`http://localhost:3000/challenges/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch challenge details");
         }
         const data = await response.json();
         setChallenge(data);
+        const demo = { data };
+        console.log(demo.data);
         setCurrentParticipants(data.participants || 0);
       } catch (error) {
         console.error("Error fetching challenge:", error);
@@ -52,8 +54,9 @@ const ChallengeDetails = () => {
       }
     };
     fetchData();
-  }, [_id]);
-  console.log(challenge);
+  }, [id]);
+  console.log(challenge.category);
+  console.log(challenge.imageUrl);
 
   const handleJoinChallenge = () => {
     if (!isJoined) {
@@ -182,12 +185,12 @@ const ChallengeDetails = () => {
         <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
           <div className="relative h-96">
             <img
-              src={challenge.imageUrl}
+              src={challenge?.imageUrl}
               alt={challenge.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
-              <div className="p-8 text-white">
+            <div className="absolute inset-0  bg-opacity-40 flex items-end">
+              <div className="p-8 text-black">
                 <div className="flex items-center gap-3 mb-3">
                   <span
                     className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(
@@ -361,10 +364,10 @@ const ChallengeDetails = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                   />
                 </svg>
-                Share Challenge
+                Delete Challenge
               </button>
             </div>
 

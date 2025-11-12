@@ -32,6 +32,7 @@
 
 import React, { useEffect, useState } from "react";
 import ActiveChallengeCard from "../ActiveChallengeCard/ActiveChallengeCard";
+import { Link } from "react-router";
 
 const ActiveChallenge = () => {
   const [data, setData] = useState([]);
@@ -120,9 +121,9 @@ const ActiveChallenge = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105">
+          <Link to="/Challenges" className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105">
             View All Challenges
-          </button>
+          </Link>
         </div>
       </div>
     </section>
