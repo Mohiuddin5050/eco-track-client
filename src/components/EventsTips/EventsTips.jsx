@@ -29,9 +29,8 @@
 
 // export default EventsTips;
 
-
-import React, { useEffect, useState } from 'react';
-import EventsTipsCard from '../EventsTipsCard/EventsTipsCard';
+import React, { useEffect, useState } from "react";
+import EventsTipsCard from "../EventsTipsCard/EventsTipsCard";
 
 const EventsTips = () => {
   const [data, setData] = useState([]);
@@ -63,12 +62,19 @@ const EventsTips = () => {
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
-            <p className="text-lg text-gray-600">Join community events and make a difference</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Upcoming Events
+            </h2>
+            <p className="text-lg text-gray-600">
+              Join community events and make a difference
+            </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {[...Array(6)].map((_, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-pulse">
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-pulse"
+              >
                 <div className="h-24 bg-gray-300"></div>
                 <div className="p-6">
                   <div className="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
@@ -97,24 +103,18 @@ const EventsTips = () => {
     <section className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
-          <p className="text-lg text-gray-600">Join community events and make a difference</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Upcoming Events
+          </h2>
+          <p className="text-lg text-gray-600">
+            Join community events and make a difference
+          </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {data.map((dt) => (
             <EventsTipsCard key={dt._id} dt={dt} />
           ))}
-        </div>
-
-        {/* View All Events Button */}
-        <div className="text-center mt-8">
-          <button className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105">
-            View All Events
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
         </div>
       </div>
     </section>

@@ -52,15 +52,6 @@ const ActiveChallengeCard = ({ dt }) => {
     return icons[cat] || "🌍";
   };
 
-  const handleViewDetails = async () => {
-    console.log(_id);
-    try {
-      await fetch(`http://localhost:3000/challenges/${_id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
       {/* Challenge Image */}
@@ -142,7 +133,6 @@ const ActiveChallengeCard = ({ dt }) => {
         {/* Action Button */}
         <Link
           to={`/challenges/${_id}`}
-          onClick={handleViewDetails}
           className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
         >
           See More

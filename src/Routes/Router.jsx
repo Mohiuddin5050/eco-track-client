@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Challenges from "../pages/Challenges";
 import MyActivities from "../pages/MyActivities";
+import ChallengeDetails from "../components/ChallengeDetails/ChallengeDetails";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "challenges/:id",
-        element: <Challenges></Challenges>,
+        element: <ChallengeDetails />,
       },
     ],
   },

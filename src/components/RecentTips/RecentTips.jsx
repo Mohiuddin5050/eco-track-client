@@ -119,26 +119,6 @@ const RecentTips = () => {
             <RecentTipsCard key={dt._id} dt={dt} />
           ))}
         </div>
-
-        {/* View All Tips Button */}
-        <div className="text-center mt-8">
-          <button className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105">
-            View All Tips
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
     </section>
   );
