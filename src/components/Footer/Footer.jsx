@@ -94,7 +94,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/my-activities"
+                  href="/activities"
                   className="text-gray-300 hover:text-green-400 transition-colors duration-200"
                 >
                   My Activities

@@ -9,6 +9,7 @@ import MyActivities from "../pages/MyActivities";
 import ChallengeDetails from "../components/ChallengeDetails/ChallengeDetails";
 import AddChallenge from "../pages/AddChallenge";
 import JoinChallenge from "../components/JoinChallenge/JoinChallenge";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,11 +34,19 @@ const router = createBrowserRouter([
       },
       {
         path: "activities",
-        element: <MyActivities></MyActivities>,
+        element: (
+          <PrivetRoute>
+            <MyActivities></MyActivities>
+          </PrivetRoute>
+        ),
       },
       {
         path: "addChallenge",
-        element: <AddChallenge />,
+        element: (
+          <PrivetRoute>
+            <AddChallenge />
+          </PrivetRoute>
+        ),
       },
       {
         path: "challenges/:id",

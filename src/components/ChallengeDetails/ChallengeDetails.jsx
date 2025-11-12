@@ -44,7 +44,7 @@ const ChallengeDetails = () => {
         }
         const data = await response.json();
         setChallenge(data);
-        const demo = { data };
+        // const demo = { data };
         // console.log(demo.data);
         setCurrentParticipants(data.participants || 0);
       } catch (error) {
@@ -86,7 +86,7 @@ const ChallengeDetails = () => {
       // }
 
       // const result = await response.json();
-      // console.log(result.message); // ✅ "Challenge deleted successfully"
+      // console.log(result.message); 
 
       // if (result.success) {
       //   // remove from UI
@@ -98,7 +98,7 @@ const ChallengeDetails = () => {
       //   toast.error(result.message);
       // }
     } catch (error) {
-      // console.error("Error deleting challenge:", error);
+      console.error("Error deleting challenge:", error);
       toast.error("Something went wrong while deleting");
     } finally {
       setLoading(false);
@@ -225,7 +225,7 @@ const ChallengeDetails = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0  bg-opacity-40 flex items-end">
-              <div className="p-8 text-black">
+              <div className="p-8 text-white">
                 <div className="flex items-center gap-3 mb-3">
                   <span
                     className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(

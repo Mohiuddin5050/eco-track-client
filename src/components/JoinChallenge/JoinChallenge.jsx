@@ -22,8 +22,9 @@
 
 // export default JoinChallenge;
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
+import { AuthContext } from "../../provider/AuthContext";
 
 const JoinChallenge = () => {
   const [challenge, setChallenge] = useState(null);
@@ -31,8 +32,10 @@ const JoinChallenge = () => {
   const [joining, setJoining] = useState(false);
   const [joined, setJoined] = useState(false);
   const [error, setError] = useState(null);
+  const { user } = use(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
+  console.log(challenge);
 
   // Fetch challenge details
   useEffect(() => {
@@ -71,7 +74,7 @@ const JoinChallenge = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedChallenge),
+        body: JSON.stringify({ ...updatedChallenge, email: user.email }),
       });
 
       if (!response.ok) {
@@ -79,7 +82,8 @@ const JoinChallenge = () => {
       }
 
       const result = await response.json();
-      setChallenge(result);
+      setChallenge(updatedChallenge);
+      console.log(result);
       setJoined(true);
 
       // Here you would also create a userChallenge record
@@ -329,7 +333,7 @@ const JoinChallenge = () => {
                   </p>
                   <div className="space-y-3">
                     <button
-                      onClick={() => navigate("/my-activities")}
+                      onClick={() => navigate("/activities")}
                       className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
                     >
                       View My Activities

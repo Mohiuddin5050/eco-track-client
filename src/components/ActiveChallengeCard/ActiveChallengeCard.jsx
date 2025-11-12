@@ -53,9 +53,9 @@ const ActiveChallengeCard = ({ dt }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 flex flex-col h-full">
       {/* Challenge Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 overflow-hidden flex-shrink-0">
         <img
           src={imageUrl}
           alt={title}
@@ -78,17 +78,19 @@ const ActiveChallengeCard = ({ dt }) => {
         </div>
       </div>
 
-      {/* Challenge Content */}
-      <div className="p-6">
+      {/* Challenge Content - This section will grow and push button to bottom */}
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
           {title}
         </h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{description}</p>
+        <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
+          {description}
+        </p>
 
         {/* Target */}
         <div className="mb-4">
           <p className="text-sm font-medium text-gray-700 mb-1">Target:</p>
-          <p className="text-gray-900 font-semibold">{target}</p>
+          <p className="text-gray-900 font-semibold line-clamp-2">{target}</p>
         </div>
 
         {/* Progress and Metrics */}
@@ -108,7 +110,7 @@ const ActiveChallengeCard = ({ dt }) => {
         </div>
 
         {/* Timeline */}
-        <div className="mb-4">
+        <div className="mb-6">
           <div className="flex justify-between text-sm text-gray-600 mb-2">
             <span>Start: {new Date(startDate).toLocaleDateString()}</span>
             <span>End: {new Date(endDate).toLocaleDateString()}</span>
@@ -130,14 +132,16 @@ const ActiveChallengeCard = ({ dt }) => {
           </div>
         </div>
 
-        {/* Action Button */}
-        <Link
-          to={`/challenges/${_id}`}
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
-        >
-          See More
-          <span>→</span>
-        </Link>
+        {/* Action Button - This will always be at the bottom */}
+        <div className="mt-auto">
+          <Link
+            to={`/challenges/${_id}`}
+            className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          >
+            See More
+            <span>→</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
