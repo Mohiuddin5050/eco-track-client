@@ -7,35 +7,37 @@ import Register from "../pages/Register";
 import Challenges from "../pages/Challenges";
 import MyActivities from "../pages/MyActivities";
 
-
-const router= createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout/>,
-        children:[
-            {
-                index: true,
-                element:<HomePage/>,
-            },
-            {
-                path: 'login',
-                element:<Login></Login>
-            },
-            {
-                path: 'register',
-                element: <Register></Register>
-            },
-            {
-                path: 'challenges',
-                element: <Challenges></Challenges>
-            },
-            {
-                path: 'activities',
-                element: <MyActivities></MyActivities>
-            }
-        ]
-    }
-])
-
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+      {
+        path: "challenges",
+        element: <Challenges></Challenges>,
+      },
+      {
+        path: "activities",
+        element: <MyActivities></MyActivities>,
+      },
+      {
+        path: "challenges/:id",
+        element: <Challenges></Challenges>,
+      },
+    ],
+  },
+]);
 
 export default router;

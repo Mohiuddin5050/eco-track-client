@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ActiveChallengeCard = ({ dt }) => {
   const {
+    _id,
     title,
     category,
     description,
@@ -48,6 +50,15 @@ const ActiveChallengeCard = ({ dt }) => {
       "Green Living": "🌿",
     };
     return icons[cat] || "🌍";
+  };
+
+  const handleViewDetails = async () => {
+    console.log(_id);
+    try {
+      await fetch(`http://localhost:3000/challenges/${_id}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -129,10 +140,14 @@ const ActiveChallengeCard = ({ dt }) => {
         </div>
 
         {/* Action Button */}
-        <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
-          Join Challenge
+        <Link
+          to={`/challenges/${_id}`}
+          onClick={handleViewDetails}
+          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+        >
+          See More
           <span>→</span>
-        </button>
+        </Link>
       </div>
     </div>
   );
