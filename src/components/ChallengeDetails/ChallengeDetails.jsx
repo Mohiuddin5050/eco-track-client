@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const ChallengeDetails = () => {
@@ -22,11 +21,9 @@ const ChallengeDetails = () => {
         }
         const data = await response.json();
         setChallenge(data);
-        // const demo = { data };
-        // console.log(demo.data);
         setCurrentParticipants(data.participants || 0);
       } catch (error) {
-        // console.error("Error fetching challenge:", error);
+        console.error("Error fetching challenge:", error);
         setError("Failed to load challenge details");
       } finally {
         setLoading(false);
@@ -39,11 +36,9 @@ const ChallengeDetails = () => {
     if (!isJoined) {
       setCurrentParticipants(currentParticipants + 1);
       setIsJoined(true);
-      // Here you would typically make an API call to join the challenge
     } else {
       setCurrentParticipants(currentParticipants - 1);
       setIsJoined(false);
-      // Here you would typically make an API call to leave the challenge
     }
   };
 
