@@ -1,29 +1,7 @@
-// import React, { useEffect } from "react";
-// import { useParams } from "react-router";
-
-// const ChallengeDetails = () => {
-//   const { id } = useParams();
-
-//   useEffect(()=>{
-//     const fetchData = async () => {
-//     // console.log(_id);
-//     try {
-//       await fetch(`http://localhost:3000/challenges/${id}`);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   fetchData()
-//   },[id])
-//   console.log(id);
-//   return <div></div>;
-// };
-
-// export default ChallengeDetails;
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ChallengeDetails = () => {
   const { id } = useParams();
@@ -70,39 +48,61 @@ const ChallengeDetails = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
-    try {
-      setLoading(true);
-      await fetch(`http://localhost:3000/challenges/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+    // Show confirmation alert
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          setLoading(true);
+          const response = await fetch(
+            `http://localhost:3000/challenges/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
 
-      // if (!response.ok) {
-      //   throw new Error("Failed to delete challenge");
-      // }
+          const data = await response.json();
 
-      // const result = await response.json();
-      // console.log(result.message); 
+          if (response.ok && data.success) {
+            // Show success message
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your challenge has been deleted.",
+              icon: "success",
+              timer: 1500,
+              showConfirmButton: false,
+            });
 
-      // if (result.success) {
-      //   // remove from UI
-      //   setChallenges((prev) =>
-      //     prev.filter((challenge) => challenge._id !== id)
-      //   );
-      //   toast.success(result.message);
-      // } else {
-      //   toast.error(result.message);
-      // }
-    } catch (error) {
-      console.error("Error deleting challenge:", error);
-      toast.error("Something went wrong while deleting");
-    } finally {
-      setLoading(false);
-    }
+            // Navigate back after short delay
+            setTimeout(() => {
+              navigate("/challenges");
+            }, 1500);
+          } else {
+            Swal.fire({
+              title: "Failed!",
+              text: data.message || "Failed to delete challenge.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting challenge:", error);
+          Swal.fire({
+            title: "Error!",
+            text: "Something went wrong while deleting.",
+            icon: "error",
+          });
+        } finally {
+          setLoading(false);
+        }
+      }
+    });
   };
 
   const calculateDaysRemaining = () => {
@@ -335,13 +335,6 @@ const ChallengeDetails = () => {
           <div className="space-y-6">
             {/* Join Card */}
             <div className="bg-white rounded-xl shadow-sm p-6 sticky top-6">
-              <div className="text-center mb-6">
-                <div className="text-4xl font-bold text-green-600 mb-2">
-                  {currentParticipants}
-                </div>
-                <div className="text-gray-600">People Joined</div>
-              </div>
-
               <Link
                 to={`/joinChallenges/${id}`}
                 onClick={handleJoinChallenge}

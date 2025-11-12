@@ -1,14 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBSTMPd_oSCBKd4dIImBlF8gRUX9IAtV90",
-  authDomain: "eco-track-e97da.firebaseapp.com",
-  projectId: "eco-track-e97da",
-  storageBucket: "eco-track-e97da.firebasestorage.app",
-  messagingSenderId: "225870889351",
-  appId: "1:225870889351:web:530b6a60625ea303295322"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

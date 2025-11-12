@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const AddChallenge = () => {
   const navigate = useNavigate();
@@ -93,7 +94,6 @@ const AddChallenge = () => {
 
     setIsSubmitting(true);
     try {
-      // Simulate API call
       const challengeData = {
         ...formData,
         participants: 0,
@@ -110,15 +110,42 @@ const AddChallenge = () => {
       });
 
       if (response.ok) {
-        // Show success message and redirect
-        alert("Challenge created successfully!");
-        // navigate("/challenges");
+        // ✅ Show SweetAlert success message
+        await Swal.fire({
+          title: "🎉 Challenge Created!",
+          text: "Your challenge has been added successfully.",
+          icon: "success",
+          confirmButtonColor: "#22c55e",
+        });
+
+        // ✅ Reset form after submission
+        setFormData({
+          title: "",
+          category: "",
+          description: "",
+          duration: "",
+          target: "",
+          impactMetric: "",
+          startDate: "",
+          endDate: "",
+          imageUrl: "",
+        });
+
+        // ✅ Optional redirect
+        navigate("/challenges");
       } else {
         throw new Error("Failed to create challenge");
       }
     } catch (error) {
       console.error("Error creating challenge:", error);
-      alert("Failed to create challenge. Please try again.");
+
+      // ❌ Show SweetAlert error message
+      Swal.fire({
+        title: "⚠️ Error!",
+        text: "Failed to create challenge. Please try again.",
+        icon: "error",
+        confirmButtonColor: "#ef4444",
+      });
     } finally {
       setIsSubmitting(false);
     }
