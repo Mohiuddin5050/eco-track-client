@@ -22,7 +22,7 @@
 // export default ChallengeDetails;
 
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import { toast } from "react-toastify";
 
 const ChallengeDetails = () => {
@@ -342,7 +342,8 @@ const ChallengeDetails = () => {
                 <div className="text-gray-600">People Joined</div>
               </div>
 
-              <button
+              <Link
+                to={`/joinChallenges/${id}`}
                 onClick={handleJoinChallenge}
                 className={`w-full font-semibold py-4 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 ${
                   isJoined
@@ -385,7 +386,7 @@ const ChallengeDetails = () => {
                     Join Challenge
                   </>
                 )}
-              </button>
+              </Link>
 
               {/* Share Button */}
               <button

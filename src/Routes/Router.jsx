@@ -8,6 +8,7 @@ import Challenges from "../pages/Challenges";
 import MyActivities from "../pages/MyActivities";
 import ChallengeDetails from "../components/ChallengeDetails/ChallengeDetails";
 import AddChallenge from "../pages/AddChallenge";
+import JoinChallenge from "../components/JoinChallenge/JoinChallenge";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "challenges/:id",
         element: <ChallengeDetails />,
+      },
+      {
+        path: "joinChallenges/:id",
+        element: <JoinChallenge />,
       },
     ],
   },
