@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
-import useTitle from "../../hooks/useTitle";
 
 const ActiveChallengeCard = ({ dt }) => {
-  useTitle("ActiveChallengeCard");
-
   const {
     _id,
     title,
