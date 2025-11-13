@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const { signIn, googleLogin, setUser } = useContext(AuthContext);
-  console.log(setUser);
+  // console.log(setUser);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
@@ -60,7 +60,8 @@ const Login = () => {
 
     setLoading(true);
     try {
-      await signIn(formData.email, formData.password);
+      const result = await signIn(formData.email, formData.password);
+      setUser(result.user);
       toast.success("Login successful!");
       navigate(redirectPath, { replace: true });
     } catch (err) {

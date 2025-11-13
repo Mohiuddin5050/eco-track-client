@@ -10,6 +10,7 @@ import ChallengeDetails from "../components/ChallengeDetails/ChallengeDetails";
 import AddChallenge from "../pages/AddChallenge";
 import JoinChallenge from "../components/JoinChallenge/JoinChallenge";
 import PrivetRoute from "./PrivetRoute";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <AddChallenge />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivetRoute>
+            <Profile />
           </PrivetRoute>
         ),
       },
