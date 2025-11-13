@@ -1,16 +1,54 @@
-# React + Vite
+## 🌱 EcoTrack - Sustainable Living Community
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🎯 About EcoTrack
 
-Currently, two official plugins are available:
+EcoTrack is a community-driven platform where eco-conscious individuals come together to make a measurable impact on the environment. Join challenges, share sustainable tips, track your progress, and be part of the movement towards a greener planet.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### 🌐 Live URL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 [Live Site](https://eco-track-e97da.web.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### ✨ Key Features
+
+- 🌍**Community Challenges** - Join environmental challenges like Plastic-Free July, Energy Saving missions, and Water Conservation programs with real-time progress tracking
+  - Register new users with name & photo upload
+  - Login / Logout functionality
+  - Forget Password option with Gmail redirect
+- 💡 **Knowledge Sharing**
+  - Discover and share practical eco-tips from a community of sustainability enthusiasts and experts
+- ⭐ **Personalized Dashboard**
+  - Monitor your active challenges, completed goals, and overall contribution to environmental conservation
+- 👤 **My Profile Page:**
+  - Instantly view and update name & profile picture
+- 🎠 **Animated Homepage:**
+  - Beautiful slider and scroll animations
+- 📱 **Responsive Design:**
+  - Fully optimized for mobile, tablet, and desktop
+
+---
+
+### ⚙️ Technologies Used
+
+- React.js – Frontend framework
+- Firebase – Authentication & hosting
+- Tailwind CSS + DaisyUI – UI styling
+- React Router – Routing
+- React Toastify – Notifications
+- MongoDB Atlas database
+
+---
+
+### 🧑‍💻 Developer Info
+
+👨‍💻 Developed by: Mohiuddin
+💼 Role: Junior Web Developer
+
+---
+
+### 💖 Thank You for Visiting My Project!
+
+**"Play • Learn • Grow — Bringing smiles, one toy at a time!"**
