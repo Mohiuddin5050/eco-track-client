@@ -12,6 +12,7 @@ import JoinChallenge from "../components/JoinChallenge/JoinChallenge";
 import PrivetRoute from "./PrivetRoute";
 import Profile from "../pages/Profile";
 import ForgetPassword from "../pages/ForgetPassword";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
         element: <ForgetPassword />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 

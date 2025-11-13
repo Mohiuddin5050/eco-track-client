@@ -50,7 +50,7 @@ const ForgetPassword = () => {
 
           <button
             type="submit"
-            className="btn bg-purple-600 hover:bg-purple-700 text-white w-full"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
             Reset Password
           </button>
