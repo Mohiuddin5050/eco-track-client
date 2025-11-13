@@ -11,6 +11,7 @@ import AddChallenge from "../pages/AddChallenge";
 import JoinChallenge from "../components/JoinChallenge/JoinChallenge";
 import PrivetRoute from "./PrivetRoute";
 import Profile from "../pages/Profile";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "joinChallenges/:id",
         element: <JoinChallenge />,
+      },
+      {
+        path: "forgot_password",
+        element: <ForgetPassword />,
       },
     ],
   },

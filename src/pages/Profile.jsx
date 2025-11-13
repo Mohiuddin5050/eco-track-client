@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { getAuth, updateProfile } from "firebase/auth";
 
 const Profile = () => {
@@ -43,10 +43,11 @@ const Profile = () => {
 
         <div className="flex flex-col items-center mb-6">
           <img
-            src={photo}
+            src={photo || "https://i.ibb.co/5GzXkwq/user.png"}
             alt="User"
             className="w-24 h-24 rounded-full border-4 border-purple-400 mb-3"
           />
+
           <h3 className="text-lg font-semibold">{name || "No Name"}</h3>
           <p className="text-sm text-gray-600">{user?.email}</p>
         </div>
