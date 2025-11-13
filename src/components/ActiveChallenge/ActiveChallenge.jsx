@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ActiveChallengeCard from "../ActiveChallengeCard/ActiveChallengeCard";
 import { Link } from "react-router";
+import useTitle from "../../hooks/useTitle";
 
 const ActiveChallenge = () => {
+  useTitle("ActiveChallenge")
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

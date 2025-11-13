@@ -1,8 +1,10 @@
 import React, { use, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
+import useTitle from "../../hooks/useTitle";
 
 const JoinChallenge = () => {
+   useTitle("JoinChallenge")
   const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(true);
   const [joining, setJoining] = useState(false);

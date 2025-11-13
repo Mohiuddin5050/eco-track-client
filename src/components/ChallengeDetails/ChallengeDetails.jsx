@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const ChallengeDetails = () => {
+  useTitle("ChallengeDetails")
   const { id } = useParams();
   const navigate = useNavigate();
   const [challenge, setChallenge] = useState([]);

@@ -5,8 +5,10 @@ import HowItWorks from "../components/HowItWorks/HowItWorks";
 import RecentTips from "../components/RecentTips/RecentTips";
 import Statistics from "../components/Statistics/Statistics";
 import WhyGoGreen from "../components/WhyGoGreen/WhyGoGreen";
+import useTitle from "../hooks/useTitle";
 
 const HomePage = () => {
+  useTitle("Home")
   return (
     <>
       <Banner></Banner>

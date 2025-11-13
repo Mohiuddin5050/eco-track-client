@@ -3,8 +3,10 @@ import { useLocation, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import useTitle from "../hooks/useTitle";
 
 const ForgetPassword = () => {
+   useTitle("ForgetPassword")
   const auth = getAuth(app);
   const location = useLocation();
   const navigate = useNavigate();

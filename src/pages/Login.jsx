@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login")
   const { signIn, googleLogin, setUser } = useContext(AuthContext);
   // console.log(setUser);
   const [loading, setLoading] = useState(false);

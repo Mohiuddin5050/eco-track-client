@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { toast } from "react-toastify";
+import useTitle from "../hooks/useTitle";
 
 const MyActivities = () => {
+  useTitle("MyActivities")
   const { user } = useContext(AuthContext);
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);

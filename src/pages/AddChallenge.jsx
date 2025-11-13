@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const AddChallenge = () => {
+  useTitle("AddChallenge")
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",

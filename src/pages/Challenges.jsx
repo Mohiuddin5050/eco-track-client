@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ActiveChallengeCard from "../components/ActiveChallengeCard/ActiveChallengeCard";
+import useTitle from "../hooks/useTitle";
 
 const Challenges = () => {
+   useTitle("Challenges")
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");

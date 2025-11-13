@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
+import useTitle from "../hooks/useTitle";
 
 const ErrorPage = () => {
+  useTitle("404 Not Found");
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full text-center">

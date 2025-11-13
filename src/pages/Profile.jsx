@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { toast } from "react-toastify";
 import { getAuth, updateProfile } from "firebase/auth";
+import useTitle from "../hooks/useTitle";
 
 const Profile = () => {
+  useTitle("Profile")
   const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");

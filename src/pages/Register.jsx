@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
+import useTitle from "../hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register")
   const { createUser, googleLogin, updateUserProfile, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
