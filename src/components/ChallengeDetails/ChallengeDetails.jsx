@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
+import { AuthContext } from "../../provider/AuthContext";
 
 const ChallengeDetails = () => {
-  useTitle("ChallengeDetails")
+  useTitle("ChallengeDetails");
+  const { user } = use(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [challenge, setChallenge] = useState([]);
@@ -334,6 +336,7 @@ const ChallengeDetails = () => {
           <div className="space-y-6">
             {/* Join Card */}
             <div className="bg-white rounded-xl shadow-sm p-6 sticky top-6">
+              {/* Join/Leave Challenge Button */}
               <Link
                 to={`/joinChallenges/${id}`}
                 onClick={handleJoinChallenge}
@@ -380,28 +383,50 @@ const ChallengeDetails = () => {
                 )}
               </Link>
 
-              {/* Share Button */}
-              <button
-                onClick={() => {
-                  handleDelete(id);
-                }}
-                className="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              {/* Delete Button - Only show to authenticated users */}
+              {user ? (
+                <button
+                  onClick={() => {
+                    handleDelete(id);
+                  }}
+                  className="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                  />
-                </svg>
-                Delete Challenge
-              </button>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                  Delete Challenge
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                >
+                   <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                  Delete Challenge
+                </Link>
+              )}
             </div>
 
             {/* Organizer Info */}

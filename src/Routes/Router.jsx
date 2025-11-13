@@ -65,7 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "joinChallenges/:id",
-        element: <JoinChallenge />,
+        element: (
+          <PrivetRoute>
+            <JoinChallenge />
+          </PrivetRoute>
+        ),
       },
       {
         path: "forgot_password",
