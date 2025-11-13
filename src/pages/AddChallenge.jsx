@@ -101,16 +101,19 @@ const AddChallenge = () => {
         duration: parseInt(formData.duration),
       };
 
-      const response = await fetch("http://localhost:3000/challenges", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(challengeData),
-      });
+      const response = await fetch(
+        "https://eco-track-server-six.vercel.app/challenges",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(challengeData),
+        }
+      );
 
       if (response.ok) {
-        // ✅ Show SweetAlert success message
+        //Show SweetAlert success message
         await Swal.fire({
           title: "🎉 Challenge Created!",
           text: "Your challenge has been added successfully.",
@@ -118,7 +121,7 @@ const AddChallenge = () => {
           confirmButtonColor: "#22c55e",
         });
 
-        // ✅ Reset form after submission
+       
         setFormData({
           title: "",
           category: "",
@@ -131,7 +134,7 @@ const AddChallenge = () => {
           imageUrl: "",
         });
 
-        // ✅ Optional redirect
+      
         navigate("/challenges");
       } else {
         throw new Error("Failed to create challenge");
@@ -139,7 +142,7 @@ const AddChallenge = () => {
     } catch (error) {
       console.error("Error creating challenge:", error);
 
-      // ❌ Show SweetAlert error message
+      
       Swal.fire({
         title: "⚠️ Error!",
         text: "Failed to create challenge. Please try again.",

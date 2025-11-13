@@ -21,7 +21,9 @@ const Challenges = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:3000/challenges");
+        const res = await fetch(
+          "https://eco-track-server-six.vercel.app/challenges"
+        );
         const data = await res.json();
         setData(data);
         setFilteredData(data);

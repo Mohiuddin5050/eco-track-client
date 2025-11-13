@@ -1,35 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import ActiveChallengeCard from "../ActiveChallengeCard/ActiveChallengeCard";
-
-// const ActiveChallenge = () => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         await fetch("http://localhost:3000/activeChallenges")
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log(data);
-//             setData(data);
-//           });
-//       } catch (error) {
-//         console.log("H");
-//       }
-//     };
-//     fetchData();
-//   }, []);
-//   return (
-//     <div>
-//       {data.map((dt) => (
-//         <ActiveChallengeCard key={data._id} dt={dt} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default ActiveChallenge;
-
 import React, { useEffect, useState } from "react";
 import ActiveChallengeCard from "../ActiveChallengeCard/ActiveChallengeCard";
 import { Link } from "react-router";
@@ -43,7 +11,9 @@ const ActiveChallenge = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3000/activeChallenges");
+        const response = await fetch(
+          "https://eco-track-server-six.vercel.app/activeChallenges"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch challenges");
         }
@@ -59,7 +29,7 @@ const ActiveChallenge = () => {
     fetchData();
   }, []);
 
-  // Fix: Use dt._id instead of data._id
+  
   if (loading) {
     return (
       <section className="py-12 bg-gray-50">
@@ -121,7 +91,10 @@ const ActiveChallenge = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <Link to="/Challenges" className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105">
+          <Link
+            to="/Challenges"
+            className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
+          >
             View All Challenges
           </Link>
         </div>

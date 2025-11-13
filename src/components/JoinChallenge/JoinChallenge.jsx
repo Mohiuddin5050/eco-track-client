@@ -1,27 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router";
-
-// const JoinChallenge = () => {
-//   const [data, setData] = useState([]);
-//   const { id } = useParams();
-//   console.log(id);
-
-//   const fetchData = async () => {
-//     await fetch(`http://localhost:3000/challenges/${id}`, {
-//       method: "PATCH",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         setData(data);
-//       });
-//   };
-
-//   return <div></div>;
-// };
-
-// export default JoinChallenge;
-
 import React, { use, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
@@ -35,14 +11,15 @@ const JoinChallenge = () => {
   const { user } = use(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(challenge);
 
   // Fetch challenge details
   useEffect(() => {
     const fetchChallenge = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/challenges/${id}`);
+        const response = await fetch(
+          `https://eco-track-server-six.vercel.app/challenges/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch challenge details");
         }
@@ -69,35 +46,27 @@ const JoinChallenge = () => {
         participants: challenge.participants + 1,
       };
 
-      const response = await fetch(`http://localhost:3000/challenges/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...updatedChallenge, email: user.email }),
-      });
+      const response = await fetch(
+        `https://eco-track-server-six.vercel.app/challenges/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...updatedChallenge, email: user.email }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to join challenge");
       }
 
-      const result = await response.json();
+       await response.json();
       setChallenge(updatedChallenge);
-      console.log(result);
+      
       setJoined(true);
 
-      // Here you would also create a userChallenge record
-      // await fetch('http://localhost:3000/userChallenges', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     userId: 'current-user-id', // You would get this from auth
-      //     challengeId: id,
-      //     status: 'Ongoing',
-      //     progress: 0,
-      //     joinDate: new Date().toISOString()
-      //   })
-      // });
+      
     } catch (error) {
       console.error("Error joining challenge:", error);
       setError("Failed to join challenge. Please try again.");

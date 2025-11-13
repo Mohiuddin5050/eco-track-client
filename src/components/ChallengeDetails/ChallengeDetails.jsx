@@ -15,7 +15,9 @@ const ChallengeDetails = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/challenges/${id}`);
+        const response = await fetch(
+          `https://eco-track-server-six.vercel.app/challenges/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch challenge details");
         }
@@ -57,7 +59,7 @@ const ChallengeDetails = () => {
         try {
           setLoading(true);
           const response = await fetch(
-            `http://localhost:3000/challenges/${id}`,
+            `https://eco-track-server-six.vercel.app/challenges/${id}`,
             {
               method: "DELETE",
             }

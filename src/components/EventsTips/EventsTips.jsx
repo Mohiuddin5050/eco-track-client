@@ -1,34 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import EventsTipsCard from '../EventsTipsCard/EventsTipsCard';
-
-// const EventsTips = () => {
-//   const [data, setData]=useState([])
-//     useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         await fetch("http://localhost:3000/eventCollection")
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log(data);
-//             setData(data);
-//           });
-//       } catch (error) {
-//         console.log("H");
-//       }
-//     };
-//     fetchData();
-//   }, []);
-//   return (
-//     <div>
-//       {
-//         data.map((dt)=> <EventsTipsCard key={dt._id} dt={dt} /> )
-//       }
-//     </div>
-//   );
-// };
-
-// export default EventsTips;
-
 import React, { useEffect, useState } from "react";
 import EventsTipsCard from "../EventsTipsCard/EventsTipsCard";
 
@@ -41,7 +10,9 @@ const EventsTips = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3000/eventCollection");
+        const response = await fetch(
+          "https://eco-track-server-six.vercel.app/eventCollection"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

@@ -102,7 +102,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="#"
                   className="text-gray-300 hover:text-green-400 transition-colors duration-200"
                 >
                   About Us
@@ -110,7 +110,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/contact"
+                  href="#"
                   className="text-gray-300 hover:text-green-400 transition-colors duration-200"
                 >
                   Contact
@@ -197,25 +197,25 @@ const Footer = () => {
 
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
               <a
-                href="/privacy"
+                href="#"
                 className="hover:text-green-400 transition-colors duration-200"
               >
                 Privacy Policy
               </a>
               <a
-                href="/terms"
+                href="#"
                 className="hover:text-green-400 transition-colors duration-200"
               >
                 Terms of Service
               </a>
               <a
-                href="/accessibility"
+                href="#"
                 className="hover:text-green-400 transition-colors duration-200"
               >
                 Accessibility
               </a>
               <a
-                href="/cookies"
+                href="#"
                 className="hover:text-green-400 transition-colors duration-200"
               >
                 Cookie Policy

@@ -1,35 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import StatisticsCard from "../StatisticsCard/StatisticsCard";
-
-// const Statistics = () => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         await fetch("http://localhost:3000/static")
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log(data);
-//             setData(data);
-//           });
-//       } catch (error) {
-//         console.log("H");
-//       }
-//     };
-//     fetchData();
-//   }, []);
-//   return (
-//     <div>
-//       {data.map((dt) => (
-//         <StatisticsCard key={dt._id} dt={dt} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Statistics;
-
 import React, { useEffect, useState } from "react";
 import StatisticsCard from "../StatisticsCard/StatisticsCard";
 
@@ -42,7 +10,9 @@ const Statistics = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:3000/static");
+        const response = await fetch(
+          "https://eco-track-server-six.vercel.app/static"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch statistics");
         }

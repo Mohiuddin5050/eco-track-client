@@ -16,7 +16,7 @@ const MyActivities = () => {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:3000/userChallenges/${user.email}`
+          `https://eco-track-server-six.vercel.app/userChallenges/${user.email}`
         );
         const data = await res.json();
         setActivities(data);
@@ -34,11 +34,14 @@ const MyActivities = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       setUpdating(id);
-      const res = await fetch(`http://localhost:3000/userChallenges/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: newStatus }),
-      });
+      const res = await fetch(
+        `https://eco-track-server-six.vercel.app/userChallenges/${id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
 
       const data = await res.json();
       if (data.success) {
