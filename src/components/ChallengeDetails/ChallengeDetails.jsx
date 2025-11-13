@@ -366,7 +366,7 @@ const ChallengeDetails = () => {
                   </div>
                 </div>
                 <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl border border-purple-200">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">
+                  <div className="text-md font-bold text-purple-600 mb-2">
                     {challenge.impactMetric}
                   </div>
                   <div className="text-sm font-medium text-gray-600">

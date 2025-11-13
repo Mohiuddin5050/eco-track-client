@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import useTitle from "../hooks/useTitle";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  useTitle("Register")
+  useTitle("Register");
   const { createUser, googleLogin, updateUserProfile, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -93,6 +94,7 @@ const Register = () => {
     setLoading(true);
     try {
       const result = await createUser(formData.email, formData.password);
+      toast.success("Registration successful!");
 
       await updateUserProfile({
         displayName: formData.name,
@@ -120,6 +122,7 @@ const Register = () => {
     setLoading(true);
     try {
       const result = await googleLogin();
+      toast.success("Google Login successful");
       setUser(result.user);
       navigate("/");
     } catch (error) {
